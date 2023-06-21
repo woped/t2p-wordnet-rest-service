@@ -9,18 +9,6 @@ logging.basicConfig(
 app = Flask(__name__)
 lemmatizer = WordNetLemmatizer()
 
-@app.route('/synonyms', methods=['GET'])
-def get_synonyms():
-    word = request.args.get('word')
-    synonyms = []
-
-    for syn in wordnet.synsets(word):
-        for lemma in syn.lemmas():
-            synonyms.append(lemma.name())
-
-    synonyms = list(set(synonyms))
-    return jsonify(synonyms)
-
 @app.route('/baseform', methods=['POST'])
 def get_baseform():
     data = request.get_json()
@@ -30,6 +18,11 @@ def get_baseform():
     base_form = lemmatizer.lemmatize(word, pos)
     logging.info(f"Returning: {base_form}")
     return jsonify({"word": base_form})
+
+@app.route('/healthcheck', methods=['GET'])
+def healthcheck():
+
+    return jsonify({"Success": "Todo bien"})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
