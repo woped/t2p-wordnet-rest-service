@@ -12,6 +12,10 @@ This microservice is designed to support the WOPED/Text2Process service. It expo
 
 Run `docker run -p 5000:5000 wordnet-microservice` to start the microservice. The service will be available at `http://localhost:5000`.
 
+## Alternative
+
+Run the start.sh. This builds and runs an instance of the microservice
+
 ## API Endpoints
 
 ### POST /baseform
