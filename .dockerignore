@@ -1,1 +1,7 @@
 /venv
+README.md
+.gitattributes
+.dockerignore
+.gitignore
+Dockerfile
+Jenkinsfile
