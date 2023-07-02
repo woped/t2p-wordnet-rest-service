@@ -10,6 +10,8 @@ env:
   MAJOR_VERSION: 2
   MINOR_VERSION: 0
   MICRO_VERSION: 0
+  IMAGE_NAME: word-net-microservice
+  IMAGE_REPOS: woped
 
 jobs:
   build:
@@ -28,7 +30,7 @@ jobs:
           context: .
           push: true
           tags: |
-            woped/word-net-microservice:latest
-            woped/word-net-microservice:${{ env.MAJOR_VERSION }}
-            woped/word-net-microservice:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}
-            woped/word-net-microservice:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.MICRO_VERSION }}
+            ${{ env.IMAGE_REPOS }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_REPOS }}/${{ env.IMAGE_NAME }}:${{ env.MAJOR_VERSION }}
+            ${{ env.IMAGE_REPOS }}/${{ env.IMAGE_NAME }}:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}
+            ${{ env.IMAGE_REPOS }}/${{ env.IMAGE_NAME }}:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.MICRO_VERSION }}
