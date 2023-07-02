@@ -1,0 +1,34 @@
+name: WordNet Python Mircoservice Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  MAJOR_VERSION: 2
+  MINOR_VERSION: 0
+  MICRO_VERSION: 0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            woped/word-net-microservice:latest
+            woped/word-net-microservice:${{ env.MAJOR_VERSION }}
+            woped/word-net-microservice:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}
+            woped/word-net-microservice:${{ env.MAJOR_VERSION }}.${{ env.MINOR_VERSION }}.${{ env.MICRO_VERSION }}
