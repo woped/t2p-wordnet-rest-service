@@ -1,6 +1,7 @@
 # WOPED-Wordnet Microservice
 
 This microservice is designed to support the WOPED/Text2Process service. It exposes several endpoints for various WordNet related functionalities like retrieving the base form of a word, checking a word's hypernym tree, and deriving a verb from a noun.
+After cloning this repository, it's essential to [set up git hooks](https://github.com/woped/woped-git-hooks/blob/main/README.md#activating-git-hooks-after-cloning-a-repository) to ensure project standards.
 
 ## Building the Docker Image
 
