@@ -1,8 +1,12 @@
 # Use an official Python runtime as a parent image
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
 # Set the working directory in the container to /app
 WORKDIR /app
+
+# Create logs directory and set permissions
+RUN mkdir -p /app/logs && \
+    chmod 777 /app/logs
 
 # Add the current directory contents into the container at /app
 ADD ./requirements.txt /app
@@ -14,6 +18,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python -m nltk.downloader wordnet
 
 ADD . /app
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
