@@ -4,10 +4,6 @@ FROM python:3.10-alpine
 # Set the working directory in the container to /app
 WORKDIR /app
 
-# Create logs directory and set permissions
-RUN mkdir -p /app/logs && \
-    chmod 777 /app/logs
-
 # Add the current directory contents into the container at /app
 ADD ./requirements.txt /app
 
