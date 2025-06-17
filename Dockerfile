@@ -14,6 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN python -m nltk.downloader wordnet
 
 ADD . /app
+
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
 
