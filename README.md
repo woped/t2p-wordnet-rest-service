@@ -15,7 +15,7 @@ Run `docker run -p 5000:5000 wordnet-microservice` to start the microservice. Th
 
 ## Alternative
 
-Run the `start.sh`. This script builds and runs an instance of the microservice docker container.
+Run the `start.sh`. This script builds and runs an instance of the microservice docker container. 
 
 ## API Endpoints
 
