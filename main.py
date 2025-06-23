@@ -26,6 +26,18 @@ logger.info("Logging setup completed successfully")
 app = Flask(__name__)
 wnf = WordNetFunctionality()
 
+@app.before_request
+def suppress_metrics_logging():
+    """Suppress logging for /metrics endpoint to avoid log spam."""
+    if request.path == '/metrics':
+        app.logger.disabled = True
+
+@app.after_request
+def restore_logging(response):
+    """Restore logging after request is processed."""
+    app.logger.disabled = False
+    return response
+
 @app.route('/metrics')
 def metrics():
     return generate_latest(), 200, {'Content-Type': CONTENT_TYPE_LATEST}
